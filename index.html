@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Biblioteca de Stefany</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     PANTALLA DE INGRESO
+===================================================== -->
+
+<section
+    id="loginScreen"
+    class="screen login-screen"
+>
+
+    <div class="login-overlay"></div>
+
+    <div class="login-box">
+
+        <div class="logo-symbol">
+            ✦
+        </div>
+
+        <p class="small-title">
+            MI BIBLIOTECA
+        </p>
+
+        <h1>
+            Donde comienzan<br>
+            las historias
+        </h1>
+
+        <p class="login-description">
+            Ingresa tu nombre para entrar
+            a nuestra biblioteca.
+        </p>
+
+        <input
+            type="text"
+            id="userName"
+            placeholder="Escribe tu nombre..."
+            maxlength="30"
+            autocomplete="off"
+        >
+
+        <button
+            id="enterButton"
+            class="gold-button"
+        >
+            Entrar a la biblioteca
+        </button>
+
+        <p class="login-example">
+            Ejemplo: Stefany, Janet, María...
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     APLICACIÓN
+===================================================== -->
+
+<div
+    id="app"
+    class="app hidden"
+>
+
+    <!-- =================================================
+         BARRA SUPERIOR
+    ================================================== -->
+
+    <header class="navbar">
+
+        <div class="brand">
+
+            <span class="brand-icon">
+                ✦
+            </span>
+
+            <div>
+
+                <span class="brand-name">
+                    BIBLIOTECA
+                </span>
+
+                <span class="brand-subtitle">
+                    DE LAS HISTORIAS
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <button
+                class="nav-button active"
+                data-page="homePage"
+            >
+                Inicio
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="booksPage"
+            >
+                Libros
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="createPage"
+            >
+                Crear libro
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="importPage"
+            >
+                Ingresar libro
+            </button>
+
+        </nav>
+
+
+        <div class="user-area">
+
+            <span
+                id="currentUser"
+                class="current-user"
+            >
+                Usuario
+            </span>
+
+            <button
+                id="themeButton"
+                class="icon-button"
+                title="Cambiar apariencia"
+            >
+                ☾
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =================================================
+         CONTENIDO
+    ================================================== -->
+
+    <main>
+
+
+        <!-- =============================================
+             INICIO
+        ============================================== -->
+
+        <section
+            id="homePage"
+            class="page active-page"
+        >
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <p class="hero-small">
+                        BIENVENIDO A TU ESPACIO
+                    </p>
+
+                    <h1>
+                        Bienvenida,
+                        <span id="welcomeName">
+                            Stefany
+                        </span>
+                    </h1>
+
+                    <p>
+                        Aquí cada palabra puede convertirse
+                        en una historia y cada historia
+                        puede convertirse en un libro.
+                    </p>
+
+                    <button
+                        class="gold-button"
+                        data-page="createPage"
+                    >
+                        ✦ Crear mi historia
+                    </button>
+
+                </div>
+
+                <div class="hero-decoration">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <!-- ESTADÍSTICAS -->
+
+            <div class="stats">
+
+                <div class="stat-card">
+
+                    <span>
+                        📚
+                    </span>
+
+                    <strong id="totalBooks">
+                        0
+                    </strong>
+
+                    <small>
+                        Libros
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        📖
+                    </span>
+
+                    <strong id="totalChapters">
+                        0
+                    </strong>
+
+                    <small>
+                        Capítulos
+                    </small>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <span>
+                        👥
+                    </span>
+
+                    <strong id="totalUsers">
+                        0
+                    </strong>
+
+                    <small>
+                        Lectores
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIBROS RECIENTES -->
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span>
+                        NUESTRAS HISTORIAS
+                    </span>
+
+                    <h2>
+                        Libros recientes
+                    </h2>
+
+                </div>
+
+                <button
+                    class="text-button"
+                    data-page="booksPage"
+                >
+                    Ver todos →
+                </button>
+
+            </div>
+
+
+            <div
+                id="recentBooks"
+                class="book-grid"
+            ></div>
+
+
+            <!-- PERSONAS -->
+
+            <div class="section-heading people-heading">
+
+                <div>
+
+                    <span>
+                        COMUNIDAD
+                    </span>
+
+                    <h2>
+                        Personas en la biblioteca
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="peopleList"
+                class="people-list"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =============================================
+             LIBROS
+        ============================================== -->
+
+        <section
+            id="booksPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <span>
+                        BIBLIOTECA
+                    </span>
+
+                    <h1>
+                        Todos los libros
+                    </h1>
+
+                </div>
+
+                <button
+                    class="gold-button"
+                    data-page="createPage"
+                >
+                    + Crear libro
+                </button>
+
+            </div>
+
+
+            <div class="filters">
+
+                <input
+                    id="searchBooks"
+                    type="search"
+                    placeholder="Buscar por título o autor..."
+                >
+
+
+                <select
+                    id="filterGenre"
+                >
+
+                    <option value="all">
+                        Todos los géneros
+                    </option>
+
+                    <option value="novela">
+                        Novela
+                    </option>
+
+                    <option value="romance">
+                        Romance
+                    </option>
+
+                    <option value="misterio">
+                        Misterio
+                    </option>
+
+                    <option value="fantasia">
+                        Fantasía
+                    </option>
+
+                    <option value="drama">
+                        Drama
+                    </option>
+
+                    <option value="otros">
+                        Otros
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div
+                id="allBooks"
+                class="book-grid"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =============================================
+             CREAR LIBRO
+        ============================================== -->
+
+        <section
+            id="createPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <span>
+                        ESCRITORA
+                    </span>
+
+                    <h1>
+                        Crear un nuevo libro
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <div class="create-layout">
+
+
+                <!-- PORTADA -->
+
+                <div class="cover-creator">
+
+                    <div
+                        id="coverPreview"
+                        class="cover-preview"
+                    >
+
+                        <div>
+
+                            <span>
+                                ✦
+                            </span>
+
+                            <strong id="previewTitle">
+                                Tu título
+                            </strong>
+
+                            <small>
+                                Tu nombre
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <label
+                        for="coverInput"
+                        class="upload-button"
+                    >
+                        Elegir portada
+                    </label>
+
+
+                    <input
+                        id="coverInput"
+                        type="file"
+                        accept="image/*"
+                        hidden
+                    >
+
+                </div>
+
+
+                <!-- DATOS -->
+
+                <div class="form-panel">
+
+                    <div class="form-group">
+
+                        <label>
+                            Título del libro
+                        </label>
+
+                        <input
+                            id="bookTitle"
+                            type="text"
+                            placeholder="Ejemplo: ¿Y si ser feliz?"
+                        >
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label>
+                                Autor
+                            </label>
+
+                            <input
+                                id="bookAuthor"
+                                type="text"
+                                placeholder="Tu nombre"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Género
+                            </label>
+
+                            <select id="bookGenre">
+
+                                <option value="novela">
+                                    Novela
+                                </option>
+
+                                <option value="romance">
+                                    Romance
+                                </option>
+
+                                <option value="misterio">
+                                    Misterio
+                                </option>
+
+                                <option value="fantasia">
+                                    Fantasía
+                                </option>
+
+                                <option value="drama">
+                                    Drama
+                                </option>
+
+                                <option value="otros">
+                                    Otros
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Sinopsis
+                        </label>
+
+                        <textarea
+                            id="bookDescription"
+                            placeholder="¿De qué trata tu libro?"
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Frase especial
+                        </label>
+
+                        <textarea
+                            id="bookQuote"
+                            class="small-textarea"
+                            placeholder="Una frase que represente tu historia..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        id="createBookButton"
+                        class="gold-button large-button"
+                    >
+                        ✦ Crear libro
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =============================================
+             INGRESAR LIBRO
+        ============================================== -->
+
+        <section
+            id="importPage"
+            class="page"
+        >
+
+            <div class="page-header">
+
+                <div>
+
+                    <span>
+                        ARCHIVO
+                    </span>
+
+                    <h1>
+                        Ingresar un libro
+                    </h1>
+
+                    <p>
+                        Agrega un libro que ya tengas
+                        en tu computadora.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="import-box">
+
+                <div class="import-icon">
+                    📄
+                </div>
+
+                <h2>
+                    Ingresa tu libro
+                </h2>
+
+                <p>
+                    Puedes seleccionar un archivo
+                    PDF, Word o TXT.
+                </p>
+
+
+                <label
+                    for="bookFile"
+                    class="gold-button"
+                >
+                    Seleccionar archivo
+                </label>
+
+
+                <input
+                    id="bookFile"
+                    type="file"
+                    accept=".pdf,.doc,.docx,.txt"
+                    hidden
+                >
+
+
+                <div
+                    id="importStatus"
+                    class="import-status"
+                >
+                    Todavía no has seleccionado
+                    ningún archivo.
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =============================================
+             DETALLE DEL LIBRO
+        ============================================== -->
+
+        <section
+            id="bookDetailPage"
+            class="page"
+        >
+
+            <button
+                class="back-button"
+                data-page="booksPage"
+            >
+                ← Volver a libros
+            </button>
+
+
+            <div
+                id="bookDetail"
+                class="book-detail"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =============================================
+             LECTOR
+        ============================================== -->
+
+        <section
+            id="readerPage"
+            class="page"
+        >
+
+            <div class="reader-top">
+
+                <button
+                    class="back-button"
+                    data-page="bookDetailPage"
+                >
+                    ← Volver
+                </button>
+
+
+                <div
+                    id="adminControls"
+                    class="admin-controls hidden"
+                >
+
+                    <button
+                        id="editBookButton"
+                        class="small-action"
+                    >
+                        ✏️ Editar
+                    </button>
+
+                    <button
+                        id="deleteBookButton"
+                        class="small-action danger"
+                    >
+                        🗑️ Eliminar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="reader-layout">
+
+
+                <!-- CAPÍTULOS -->
+
+                <aside class="chapter-sidebar">
+
+                    <p>
+                        CONTENIDO
+                    </p>
+
+                    <div
+                        id="readerChapterList"
+                    ></div>
+
+                </aside>
+
+
+                <!-- LIBRO -->
+
+                <article class="book-reader">
+
+                    <div class="book-paper">
+
+                        <div class="book-header">
+
+                            <span id="readerGenre">
+                                NOVELA
+                            </span>
+
+                            <h1 id="readerTitle">
+                                Título
+                            </h1>
+
+                            <p id="readerAuthor">
+                                Por Autor
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            id="readerContent"
+                            class="reader-content"
+                        ></div>
+
+
+                        <div class="book-footer">
+
+                            <span>
+                                ✦
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =============================================
+             EDITOR
+        ============================================== -->
+
+        <section
+            id="editorPage"
+            class="page"
+        >
+
+            <div class="editor-top">
+
+                <button
+                    class="back-button"
+                    data-page="bookDetailPage"
+                >
+                    ← Volver
+                </button>
+
+
+                <div>
+
+                    <button
+                        id="saveChapter"
+                        class="gold-button"
+                    >
+                        ✓ Listo
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="editor-layout">
+
+
+                <aside class="editor-sidebar">
+
+                    <div class="editor-sidebar-title">
+
+                        <span>
+                            CAPÍTULOS
+                        </span>
+
+                        <button
+                            id="newChapter"
+                            class="plus-button"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="chapterList"
+                        class="chapter-list"
+                    ></div>
+
+                </aside>
+
+
+                <div class="editor-main">
+
+                    <div class="editor-toolbar">
+
+                        <input
+                            id="chapterTitle"
+                            type="text"
+                            placeholder="Título del capítulo"
+                        >
+
+
+                        <span>
+                            Palabras:
+                            <strong
+                                id="editorWordCount"
+                            >
+                                0
+                            </strong>
+                        </span>
+
+                    </div>
+
+
+                    <textarea
+                        id="chapterEditor"
+                        class="chapter-editor"
+                        placeholder="Comienza a escribir tu historia..."
+                    ></textarea>
+
+
+                    <div class="ai-panel">
+
+                        <div>
+
+                            <span>
+                                ✦ IA DE TU BIBLIOTECA
+                            </span>
+
+                            <p>
+                                Tu asistente creativo
+                            </p>
+
+                        </div>
+
+
+                        <div class="ai-actions">
+
+                            <button
+                                onclick="bookAI('idea')"
+                            >
+                                💡 Ideas
+                            </button>
+
+                            <button
+                                onclick="bookAI('continue')"
+                            >
+                                ✍️ Continuar
+                            </button>
+
+                            <button
+                                onclick="bookAI('improve')"
+                            >
+                                ✨ Mejorar
+                            </button>
+
+                            <button
+                                onclick="bookAI('characters')"
+                            >
+                                👤 Personajes
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="aiResponse"
+                            class="ai-response"
+                        >
+                            Selecciona una opción
+                            para recibir ayuda.
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div
+    id="modal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <button
+            id="closeModal"
+            class="modal-close"
+        >
+            ×
+        </button>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    id="toast"
+    class="toast"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
